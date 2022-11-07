@@ -26,7 +26,8 @@
     "prebuild": "rimraf dist",
     "build": "tsc",
     "dev": "tsc --watch",
-    "lint": "eslint ./src"
+    "lint": "eslint ./src",
+    "prepublishOnly": "npm run build"
   },
   "dependencies": {
     "@sqltools/formatter": "1.2.5",
