@@ -6,13 +6,11 @@ Works with TypeORM version 0.3.x.
 
 ## Quick setup
 
-Fully integrated TypeORM cli to make it easier to work with migrations in NestJS.
-
 ```
 npm i nestjs-typeorm-commands nest-commander
 ```
 
-In your `app.module.ts`:
+In `src/app.module.ts`:
 
 ```ts
 import { NestTypeOrmCommandsModule } from 'nestjs-typeorm-commands';
@@ -31,7 +29,7 @@ import { NestTypeOrmCommandsModule } from 'nestjs-typeorm-commands';
 export class AppModule {}
 ```
 
-In your `src/cli.ts` ([standard integration of `nest-commander`](https://docs.nestjs.com/recipes/nest-commander), if you haven't done that already):
+In `src/cli.ts` ([standard integration of `nest-commander`](https://docs.nestjs.com/recipes/nest-commander), if you haven't done that already):
 
 ```ts
 import { CommandFactory } from 'nest-commander';
@@ -44,7 +42,7 @@ async function bootstrap() {
 bootstrap();
 ```
 
-In your `package.json`:
+In `package.json`:
 
 ```json
 {
@@ -56,7 +54,7 @@ In your `package.json`:
 }
 ```
 
-And then run them in your CLI:
+And then run them:
 
 - `npm run migration:generate MigrationName` - automatically create a migration
 - `npm run migration:run` - run pending migrations
@@ -93,9 +91,9 @@ export class AppModule {}
 
 (or, even better, you get the config values from a configuration module that pulls them from env or some other mechanism).
 
-When your project is deployed you want to make use of migrations and... you get stuck. NestJS [migration docs are no help](https://docs.nestjs.com/techniques/database#migrations) and they point to [TypeORM CLI docs](https://typeorm.io/using-cli), but the way TypeORM CLI is implemented is nowhere near compatible with NestJS: it requires a dedicated file that configures `DataSource` class and does not support `autoLoadEntities` flag. Of course, you could create it and pass the same config values to it, but it gets complicated if you have non-trivial configuration layer and you use `autoLoadEntities`.
+When your project exits PoC stage and you want to make use of migrations... you get stuck. NestJS [db migration docs are no help](https://docs.nestjs.com/techniques/database#migrations) and they point to [TypeORM CLI docs](https://typeorm.io/using-cli), but the way TypeORM CLI is implemented is nowhere near compatible with NestJS: it requires a dedicated file that configures `DataSource` class and does not support `autoLoadEntities` flag. Of course, you could create it and pass the same config values to it, but it gets complicated if you have non-trivial configuration layer and you use `autoLoadEntities`.
 
-**TypeORM 0.2.x used to support `ormconfig.js` file, that was slightly easier to manage, but the result was the same.**
+_TypeORM 0.2.x used to support `ormconfig.js` file, that was slightly easier to manage, but the result was the same._
 
 Migrations are a core requirement for any production application and their support in NestJS + TypeORM is lacking.
 
@@ -103,7 +101,7 @@ Migrations are a core requirement for any production application and their suppo
 
 This package adds 1st class support of TypeORM CLI commands to NestJS, so you don't have to worry about duplicating configuration and shoehorning it to make it work with the original TypeORM CLI.
 
-It leverages [nest-commander](https://nest-commander.jaymcdoniel.dev/) (see also [NestJS docs acout it](https://docs.nestjs.com/recipes/nest-commander)) to build and register the commands in the application. You may already be using it (it's recommended if not yet).
+It leverages [nest-commander](https://nest-commander.jaymcdoniel.dev/) (see also [NestJS docs about it](https://docs.nestjs.com/recipes/nest-commander)) to build and register the commands in the application. You may already be using it (it's recommended if not yet).
 
 ## How?
 
@@ -140,7 +138,7 @@ You can set `migrationsDir` to whatever destination you want, relative to the ro
 
 #### nest-commander integration
 
-**Skip if you already have `nest-commander` integrated into your project.**
+_Skip if you already have `nest-commander` integrated into your project._
 
 Best to follow [standard integration of `nest-commander`](https://docs.nestjs.com/recipes/nest-commander), by creating a `src/cli.ts` file and pasting the below code to it:
 
@@ -179,9 +177,9 @@ Copy and paste the below:
 }
 ```
 
-**If you are not using NestJS's monorepo and you use relative paths for imports, as well as no aliases, you may omit the `-r tsconfig-paths/register` part of these commands, for readability.**
+_If you are not using NestJS's monorepo and you use relative paths for imports, as well as no aliases, you may omit the `-r tsconfig-paths/register` part of these commands, for readability._
 
-**If you have integrated nest-commander via a different file than `src/cli.ts` then replace it here.**
+_If you have integrated nest-commander via a different file than `src/cli.ts` then replace it here._
 
 ### Usage
 
