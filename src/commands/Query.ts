@@ -33,5 +33,7 @@ export class Query extends CommandRunner {
 
     await queryRunner.release();
     await this.dataSource.destroy();
+
+    process.exit(0);
   }
 }

@@ -24,5 +24,7 @@ export class SchemaDrop extends CommandRunner {
     await this.dataSource.destroy();
 
     console.log('Database schema has been successfully dropped.');
+
+    process.exit(0);
   }
 }

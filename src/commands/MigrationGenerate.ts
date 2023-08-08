@@ -99,6 +99,7 @@ export class MigrationGenerate extends CommandRunner {
       });
     } finally {
       await this.dataSource.destroy();
+      process.exit(0);
     }
 
     if (!upQueries.length) {

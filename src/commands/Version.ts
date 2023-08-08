@@ -44,6 +44,8 @@ export class Version extends CommandRunner {
           'or you are using locally installed TypeORM instead of global one.',
       );
     }
+
+    process.exit(0);
   }
 
   private executeCommand(command: string) {

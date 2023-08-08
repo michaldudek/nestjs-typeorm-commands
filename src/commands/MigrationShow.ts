@@ -38,5 +38,7 @@ export class MigrationShow extends CommandRunner {
     await this.dataSource.showMigrations();
 
     await this.dataSource.destroy();
+
+    process.exit(0);
   }
 }

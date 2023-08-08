@@ -25,5 +25,7 @@ export class SchemaSync extends CommandRunner {
     await this.dataSource.destroy();
 
     console.log('Schema synchronization finished successfully.');
+
+    process.exit(0);
   }
 }

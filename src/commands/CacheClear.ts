@@ -31,5 +31,7 @@ export class CacheClear extends CommandRunner {
     console.log('Cache was successfully cleared');
 
     await this.dataSource.destroy();
+
+    process.exit(0);
   }
 }
