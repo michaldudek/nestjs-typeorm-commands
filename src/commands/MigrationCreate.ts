@@ -44,6 +44,8 @@ export class MigrationCreate extends CommandRunner {
     await writeFile(filePath, fileContent);
 
     console.log(`Migration ${filePath} has been created successfully.`);
+
+    process.exit(0);
   }
 
   @Option({

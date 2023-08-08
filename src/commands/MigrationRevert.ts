@@ -45,6 +45,8 @@ export class MigrationRevert extends CommandRunner {
     });
 
     await this.dataSource.destroy();
+
+    process.exit(0);
   }
 
   @Option({

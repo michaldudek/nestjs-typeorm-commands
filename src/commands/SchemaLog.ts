@@ -29,7 +29,7 @@ export class SchemaLog extends CommandRunner {
         'Your schema is up to date - there are no queries to be executed by schema synchronization.',
       );
       await this.dataSource.destroy();
-      return;
+      process.exit(0);
     }
 
     const lengthSeparators = String(sqlInMemory.upQueries.length)
@@ -56,5 +56,7 @@ export class SchemaLog extends CommandRunner {
     });
 
     await this.dataSource.destroy();
+
+    process.exit(0);
   }
 }
